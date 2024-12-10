@@ -30,12 +30,8 @@
 <br>
 <br>
 
-> ## Layout 💻
 
-<img src="https://github.com/giselle-ferreira/E-commerce-Angular/blob/main/src/assets/gif/e-commerce.gif" width="900" />
 
-<br>
-<br>
 
 
 
