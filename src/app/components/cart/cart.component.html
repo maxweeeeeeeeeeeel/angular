@@ -1,0 +1,55 @@
+  <div class="container">
+    <h1 class="text-success" mat-dialog-title>Meu Carrinho <fa-icon [icon]="iconBag"></fa-icon></h1>
+    <hr>
+
+    <div mat-dialog-content >
+      <ng-container>
+        <table class="table-responsive" *ngIf="cartList.length !== 0">
+            <thead>
+            <tr>
+              <th>Product</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th colspan="2">Quantity</th>
+              <th>Total</th>
+              <th>Remover</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cartList; let i = index" >
+              <td><img class="img-fluid img-thumbnail" width="{{imgWidth}}" height="{{imgHeight}}" [src]="item.img" ></td>
+              <td>{{ item.name }}</td>
+              <td>R$ {{ item.price }}</td>
+              <td>{{ item.qnt }}</td>
+              <td>
+                <button type="button" class="btn" (click)="subtract(item)"><i><fa-icon [icon]="iconMinus"></fa-icon></i></button>
+                <button type="button"  class="btn" (click)="add(item)"><i><fa-icon [icon]="iconPlus"></fa-icon></i></button>
+              </td>
+              <td>{{ (item.price) * (item.qnt) }}</td>
+              <td><button (click)="removeItem(item)" class="btn btn-sm btn-danger"><i><fa-icon [icon]="iconTrash"></fa-icon></i></button></td>
+            </tr>
+            <tr>
+              <td colspan="5"></td>
+              <td ><strong class="btn btn-sm btn-outline-secondary"> Total: {{ cartTotal | currency: 'BRL' }}</strong></td>
+              <td><button class="btn btn-sm btn-danger" (click)="cleanCart()"></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+
+  <!-- When the cart is empty -->
+    <ng-container *ngIf="cartList.length === 0" >
+      <div class="emptyCart d-flex flex-column align-items-center">
+        <img width="{{ imgEmptyCartW }}" class="imgEmptyCart" [src]="imgEmptyCart" alt="">
+        <h3>Empty card!</h3>
+        <a class="btn btn-sm btn-success" href="/">Voltar para Loja</a>
+      </div>
+    </ng-container>
+
+    <div mat-dialog-actions *ngIf="cartList.length !== 0">
+      <button class="btn btn-sm btn-secondary" mat-button mat-dialog-close>close</button>
+  </div>
+</div>
+
+
+

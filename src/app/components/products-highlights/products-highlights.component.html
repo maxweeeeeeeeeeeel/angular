@@ -1,0 +1,38 @@
+<div class="my-4 row mx-2">
+  <div class="mt-5 text-center">
+    <h2 class="fs-2 fw-light">C L O T H E S</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div
+    *ngFor="let item of productsItems$ | async; index as i"
+    class="container-fluid col-md-4 p-1 mt-5"
+  >
+    <!-- Card Product -->
+    <div class="col">
+      <div class="card h-100 rounded-3 m-2">
+        <img class="card-img-top" src="{{ item.img }}" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title text-secondary">{{ item.name }}</h5>
+          <div class="d-flex justify-content-between align-middle">
+            <div>
+              <fa-icon [icon]="starIcon"></fa-icon>
+              <fa-icon [icon]="starIcon"></fa-icon>
+              <fa-icon [icon]="starIcon"></fa-icon>
+              <fa-icon [icon]="starIcon"></fa-icon>
+              <fa-icon [icon]="starIcon"></fa-icon>
+            </div>
+          </div>
+
+          <button
+
+            (click)="addToCart(item)"
+            class="btn btn-sm btn-outline-dark rounded-pill stretched-link mt-3 mb-0"
+          >
+           Add to card
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
